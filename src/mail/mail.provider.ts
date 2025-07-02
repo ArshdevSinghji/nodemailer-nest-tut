@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { MailDto } from './dto/mail.dto';
-import { MailerService } from '@nestjs-modules/mailer';
+import { BirthdayService } from 'src/birthday/birthday.provider';
+import { InterviewService } from 'src/interview/interview.provider';
+import { InvitationService } from 'src/invitation/invitatation.provider';
 
 @Injectable()
 export class MailService {
-  constructor(private readonly mailServive: MailerService) {}
+  constructor(
+    private birthdayService: BirthdayService,
+    private interviewService: InterviewService,
+    private invitationService: InvitationService,
+  ) {}
 
-  async sendMail(mailContent: MailDto) {
-    return this.mailServive.sendMail({
-      from: `Arshdev Singh <arshdevrajput@gmail.com>`,
-      to: 'arshdevrajput20@gmail.com',
-      subject: 'How to Send Emails with Nodemailer!',
-      text: mailContent.content,
-    });
+  async sendMail(type: string, mail) {
+    switch (type) {
+      case 'bday':
+        return await this.birthdayService.sendMail(mail);
+      case 'interview':
+        return await this.interviewService.sendMail(mail);
+      case 'invitation':
+        return await this.invitationService.sendMail(mail);
+    }
   }
 }

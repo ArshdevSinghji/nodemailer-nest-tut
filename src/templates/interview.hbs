@@ -1,0 +1,203 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Interview Invitation - {{candidateName}}</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7fa;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 300;
+      }
+      .content {
+        padding: 30px;
+      }
+      .greeting {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #2c3e50;
+      }
+      .details {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      .detail-item {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+      .detail-label {
+        font-weight: bold;
+        color: #495057;
+        min-width: 120px;
+        margin-right: 10px;
+      }
+      .detail-value {
+        color: #2c3e50;
+      }
+      .icon {
+        margin-right: 8px;
+        color: #667eea;
+      }
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        margin: 20px 0;
+        text-align: center;
+        transition: transform 0.2s;
+      }
+      .cta-button:hover {
+        transform: translateY(-2px);
+      }
+      .footer {
+        background: #f8f9fa;
+        padding: 20px 30px;
+        border-top: 1px solid #e9ecef;
+        text-align: center;
+        color: #6c757d;
+        font-size: 14px;
+      }
+      .contact-info {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #e9ecef;
+      }
+      .note {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='header'>
+        <h1>🎯 Interview Invitation</h1>
+        <p>We're excited to meet you!</p>
+      </div>
+
+      <div class='content'>
+        <div class='greeting'>
+          Dear
+          {{candidateName}},
+        </div>
+
+        <p>Congratulations! We were impressed with your application for the
+          <strong>{{position}}</strong>
+          position at
+          <strong>{{companyName}}</strong>. We would like to invite you for an
+          interview to discuss your qualifications further.</p>
+
+        <div class='details'>
+          <h3 style='margin-top: 0; color: #495057;'>📅 Interview Details</h3>
+
+          <div class='detail-item'>
+            <span class='detail-label'>📍 Type:</span>
+            <span class='detail-value'>{{interviewType}}</span>
+          </div>
+
+          {{#if location}}
+            <div class='detail-item'>
+              <span class='detail-label'>📍 Location:</span>
+              <span class='detail-value'>{{location}}</span>
+            </div>
+          {{/if}}
+
+          {{#if meetingLink}}
+            <div class='detail-item'>
+              <span class='detail-label'>🔗 Meeting Link:</span>
+              <span class='detail-value'><a
+                  href='{{meetingLink}}'
+                  style='color: #667eea;'
+                >{{meetingLink}}</a></span>
+            </div>
+          {{/if}}
+
+          <div class='detail-item'>
+            <span class='detail-label'>👤 Interviewer:</span>
+            <span class='detail-value'>{{interviewer}}</span>
+          </div>
+        </div>
+
+        {{#if confirmationLink}}
+          <div style='text-align: center;'>
+            <a href='{{confirmationLink}}' class='cta-button'>
+              ✓ Confirm Interview
+            </a>
+          </div>
+        {{/if}}
+
+        <div class='note'>
+          <strong>📋 What to Bring/Prepare:</strong>
+          <ul style='margin: 10px 0;'>
+            <li>Updated copy of your resume</li>
+            <li>Portfolio or work samples (if applicable)</li>
+            <li>Valid ID for verification</li>
+            <li>Questions about the role and company</li>
+            {{#if additionalRequirements}}
+              <li>{{additionalRequirements}}</li>
+            {{/if}}
+          </ul>
+        </div>
+
+        <p>We're looking forward to learning more about your experience and
+          discussing how you can contribute to our team. If you have any
+          questions or need to reschedule, please don't hesitate to contact us.</p>
+
+        <p>Best regards,<br />
+          <strong>{{recruiterName}}</strong><br />
+          {{recruiterTitle}}<br />
+          {{companyName}}</p>
+
+        <div class='contact-info'>
+          <strong>Contact Information:</strong><br />
+          📧 Email:
+          {{recruiterEmail}}<br />
+          {{#if recruiterPhone}}
+            📞 Phone:
+            {{recruiterPhone}}<br />
+          {{/if}}
+          🌐 Website:
+          {{companyWebsite}}
+        </div>
+      </div>
+
+      <div class='footer'>
+        <p>This is an automated message from {{companyName}}.</p>
+        <p>© {{companyName}}. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>
