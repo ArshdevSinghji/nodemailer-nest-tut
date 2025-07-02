@@ -13,7 +13,7 @@ export class BirthdayService {
       template: './birthday',
       context: {
         name: bDay.name,
-        email: process.env.EMAIL_USERNAME,
+        from: process.env.EMAIL_USERNAME,
       },
     });
   }
