@@ -9,6 +9,5 @@ import { BirthdayModule } from 'src/birthday/birthday.module';
   imports: [InvitationModule, InterviewModule, BirthdayModule],
   controllers: [MailController],
   providers: [MailService],
-  exports: [MailService],
 })
 export class MailModule {}

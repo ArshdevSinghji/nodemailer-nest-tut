@@ -5,6 +5,7 @@ import { BirthdayDto } from './dto/bithday.dto';
 @Injectable()
 export class BirthdayService {
   constructor(private mailerService: MailerService) {}
+
   async sendMail(bDay: BirthdayDto) {
     return this.mailerService.sendMail({
       from: process.env.EMAIL_USERNAME,
